@@ -3,19 +3,47 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=, initial-scale=1.0" />
-    <link rel="stylesheet" href="src/style.css" />
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"
       rel="stylesheet"
       integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1"
       crossorigin="anonymous"
     />
-    <title>My weather app</title>
+    <link rel="stylesheet" href="src/style.css" />
+    <title>MyWeather app</title>
   </head>
   <body>
     <div class="container">
-      <h1>Lovely weather!</h1>
-      <a href="" class="btn btn-primary"> Click me </a>
+      <div class="my-weather-app-wrapper">
+        <div class="my-weather-app">
+          MyWeather App
+          <div class="row">
+            <div class="col-5">
+              <h1>Wed Jan 13 2021, 11:49</h1>
+              <h2>Warsaw</h2>
+              <p>
+                0 <span class="temperature-unit" id="temperature-unit">°C</span>
+                <img src="src/weather icons/sun.png" alt="sunny" />
+              </p>
+              <br /><br />
+              <p1>Clouds</p1>
+            </div>
+            <div class="col-5">
+              <ul>
+                <li>Precipitation: %</li>
+                <li>Humidity: %</li>
+                <li>Wind: km/h</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <small>
+          <a href="https://github.com/mong89/my-weather-app-project.git"
+            >Open source code</a
+          >
+          by Monika Gawińska
+        </small>
+      </div>
     </div>
   </body>
   <script src="src/app.js"></script>
