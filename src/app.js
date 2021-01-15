@@ -46,12 +46,41 @@ function showTemperature(response) {
   let descriptionElement = document.querySelector("#description");
   descriptionElement.innerHTML = response.data.weather[0].description;
 
+  let icon = document.querySelector("#icon");
+  icon.src = getIconPath(response.data.weather[0].description);
+
   let humidityElement = document.querySelector("#humidity");
   humidityElement.innerHTML = response.data.main.humidity;
 
   let windElement = document.querySelector("#wind");
   windElement.innerHTML = response.data.wind.speed;
 }
+
+function getIconPath(description) {
+  switch (description) {
+    case "clear sky":
+      return "src/weather_icons/clear_sky.png";
+    case "few clouds":
+      return "src/weather_icons/few_clouds.png";
+    case "scattered clouds":
+      return "src/weather_icons/cloudy.png";
+    case "broken clouds":
+      return "src/weather_icons/cloudy.png";
+    case "shower rain":
+      return "src/weather_icons/shower_rain.png";
+    case "rain":
+      return "src/weather_icons/rain.png";
+    case "thunderstorm":
+      return "src/weather_icons/thunderstorm.png";
+    case "snow":
+      return "src/weather_icons/snow.png";
+    case "mist":
+      return "src/weather_icons/cloudy.png";
+    default:
+      return "src/weather_icons/few_clouds.png";
+  }
+}
+//let city = "";
 
 let apiKey = "4af9b5d3de1ded9c0d4d2430790f082e";
 let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=New York&appid=${apiKey}&units=metric`;
