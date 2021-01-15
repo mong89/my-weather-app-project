@@ -2,13 +2,14 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"
       rel="stylesheet"
       integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1"
       crossorigin="anonymous"
     />
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <link rel="stylesheet" href="src/style.css" />
     <title>MyWeather app</title>
   </head>
@@ -19,20 +20,24 @@
           MyWeather App
           <div class="row">
             <div class="col-5">
-              <h1>Wed Jan 13 2021, 11:49</h1>
-              <h2>Warsaw</h2>
-              <p>
-                0 <span class="temperature-unit" id="temperature-unit">°C</span>
-                <img src="src/weather icons/sun.png" alt="sunny" />
-              </p>
+              <h1 id="current-date"></h1>
+              <h2 id="city"></h2>
+              <p id="temperature"></p>
+              <span class="temperature-unit" id="temperature-unit"
+                >°C | <a href="" style="text-decoration: none"> °F</a></span
+              >
+
+              <img src="src/weather icons/sun.png" alt="sunny" />
+
               <br /><br />
-              <p1>Clouds</p1>
+              <p1><span id="description"></span></p1>
             </div>
             <div class="col-5">
               <ul>
-                <li>Precipitation: %</li>
-                <li>Humidity: %</li>
-                <li>Wind: km/h</li>
+                <li>Humidity: <span id="humidity"></span>%</li>
+                <li>Wind: <span id="wind"></span>km/h</li>
+                <br />
+                It's a good day anyway!
               </ul>
             </div>
           </div>

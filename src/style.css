@@ -29,18 +29,22 @@ p {
 .temperature-unit {
   vertical-align: super;
   font-size: 18px;
+  text-decoration: none;
   margin-top: 6px;
+  float: left;
 }
 
 p1 {
-  margin-right: 70px;
+  margin-top: 20px;
+  margin-right: 60px;
+  float: left;
 }
 
 img {
   height: 50px;
   margin-left: 20px;
   clear: none;
-  float: right;
+  float: left;
 }
 
 ul {
