@@ -15,6 +15,26 @@ body {
   border-radius: 15px;
   background-image: linear-gradient(-20deg, #e9defa 0%, #fbfcdb 100%);
 }
+.form {
+  display: block;
+  text-align: center;
+  font-size: 15px;
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
+
+.enter-city {
+  display: inline-block;
+  border: #6610f2;
+}
+.btn {
+  display: inline-block;
+  font-weight: 400;
+  line-height: 0.95;
+  height: 28px;
+  border: 1px;
+  background-color: lightskyblue;
+}
 
 h1 {
   font-size: 18px;

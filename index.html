@@ -18,6 +18,23 @@
       <div class="my-weather-app-wrapper">
         <div class="my-weather-app">
           MyWeather App
+          <div class="form">
+            <form id="search-form">
+              <input
+                type="text"
+                placeholder="Enter a city"
+                autocomplete="off"
+                autofocus="on"
+                id="enter-city"
+              />
+              <input
+                type="submit"
+                value="search"
+                class="btn btn-primary"
+                id="search-button"
+              />
+            </form>
+          </div>
           <div class="row">
             <div class="col-5">
               <h1 id="current-date"></h1>
@@ -36,9 +53,8 @@
               <ul>
                 <li>Humidity: <span id="humidity"></span>%</li>
                 <li>Wind: <span id="wind"></span>km/h</li>
-                <br />
-                It's a good day anyway!
               </ul>
+              <p2>It's a good day anyway!</p2>
             </div>
           </div>
         </div>

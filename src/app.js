@@ -74,16 +74,29 @@ function getIconPath(description) {
       return "src/weather_icons/thunderstorm.png";
     case "snow":
       return "src/weather_icons/snow.png";
+    case "light snow":
+      return "src/weather_icons/snow.png";
     case "mist":
       return "src/weather_icons/cloudy.png";
     default:
       return "src/weather_icons/few_clouds.png";
   }
 }
-//let city = "";
 
-let apiKey = "4af9b5d3de1ded9c0d4d2430790f082e";
-let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=New York&appid=${apiKey}&units=metric`;
+function showCity(city) {
+  let apiKey = "4af9b5d3de1ded9c0d4d2430790f082e";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(showTemperature);
+}
 
-axios.get(apiUrl).then(showTemperature);
+function search(event) {
+  event.preventDefault();
+  let city = document.querySelector("#enter-city").value;
+  showCity(city);
+}
+
+let form = document.querySelector("#search-form");
+form.addEventListener("submit", search);
+
 showDate();
+showCity("Warsaw");
