@@ -54,6 +54,8 @@ function showTemperature(response) {
 
   let windElement = document.querySelector("#wind");
   windElement.innerHTML = response.data.wind.speed;
+
+  celsiusTemperature = response.data.main.temp;
 }
 
 function getIconPath(description) {
@@ -68,7 +70,11 @@ function getIconPath(description) {
       return "src/weather_icons/cloudy.png";
     case "shower rain":
       return "src/weather_icons/shower_rain.png";
+    case "heavy intensity rain":
+      return "src/weather_icons/shower_rain.png";
     case "rain":
+      return "src/weather_icons/rain.png";
+    case "light rain":
       return "src/weather_icons/rain.png";
     case "thunderstorm":
       return "src/weather_icons/thunderstorm.png";
@@ -95,8 +101,29 @@ function search(event) {
   showCity(city);
 }
 
+function showFahrenheit(event) {
+  event.preventDefault();
+  let temperatureElement = document.querySelector("#temperature");
+  let fahrenheitTemperature = (celsiusTemperature * 9) / 5 + 32;
+  temperatureElement.innerHTML = Math.round(fahrenheitTemperature);
+}
+
+function showCelsius(event) {
+  event.preventDefault();
+  let temperatureElement = document.querySelector("#temperature");
+  temperatureElement.innerHTML = Math.round(celsiusTemperature);
+}
+
+let celsiusTemperature = null;
+
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", search);
+
+let fahrenheitLink = document.querySelector("#fahrenheit-link");
+fahrenheitLink.addEventListener("click", showFahrenheit);
+
+let celsiusLink = document.querySelector("#celsius-link");
+celsiusLink.addEventListener("click", showCelsius);
 
 showDate();
 showCity("Warsaw");
