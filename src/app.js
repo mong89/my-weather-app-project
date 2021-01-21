@@ -34,6 +34,20 @@ function showDate() {
   h1.innerHTML = `${day} ${month} ${date} ${year}, ${hours}:${minutes}`;
 }
 
+function showHours(timestamp) {
+  let now = new Date(timestamp);
+  let hours = now.getHours();
+  if (hours < 10) {
+    hours = `0${hours}`;
+  }
+  let minutes = now.getMinutes();
+  if (minutes < 10) {
+    minutes = `0${minutes}`;
+  }
+
+  return `${hours}:${minutes}`;
+}
+
 function showTemperature(response) {
   //   let dateElement = document.querySelector("#current-date");
   //   dateElement.innerHTML = await response.data.dt;
@@ -55,7 +69,11 @@ function showTemperature(response) {
   let windElement = document.querySelector("#wind");
   windElement.innerHTML = response.data.wind.speed;
 
+  //   let quoteElement = document.querySelector("#quote");
+  //   quoteElement.innerHTML = showQuote(response.data.quote);
+
   celsiusTemperature = response.data.main.temp;
+  showQuote(response.data.main.temp);
 }
 
 function getIconPath(description) {
@@ -68,6 +86,8 @@ function getIconPath(description) {
       return "src/weather_icons/cloudy.png";
     case "broken clouds":
       return "src/weather_icons/cloudy.png";
+    case "overcast clouds":
+      return "src/weather_icons/cloudy.png";
     case "shower rain":
       return "src/weather_icons/shower_rain.png";
     case "heavy intensity rain":
@@ -75,6 +95,8 @@ function getIconPath(description) {
     case "rain":
       return "src/weather_icons/rain.png";
     case "light rain":
+      return "src/weather_icons/rain.png";
+    case "moderate rain":
       return "src/weather_icons/rain.png";
     case "thunderstorm":
       return "src/weather_icons/thunderstorm.png";
@@ -84,8 +106,41 @@ function getIconPath(description) {
       return "src/weather_icons/snow.png";
     case "mist":
       return "src/weather_icons/cloudy.png";
+    case "fog":
+      return "src/weather_icons/cloudy.png";
     default:
       return "src/weather_icons/few_clouds.png";
+  }
+}
+
+function showForecast(response) {
+  let forecastElement = document.querySelector("#forecast");
+  forecastElement.innerHTML = null;
+  let forecast = null;
+
+  for (let index = 0; index < 6; index++) {
+    forecast = response.data.list[index];
+    forecastElement.innerHTML += `
+        <div class="weather-forecast" id="forecast">
+        <div class="forecast-column" id="forecast-column">
+            <h3 id="forecast-hour"> 
+            ${showHours(forecast.dt * 1000)} 
+            </h3>
+            <img id="forecast-img"
+            src="src/weather_icons/.png"
+            />
+            <br />
+         <div class="weather-forecast-temperature">
+         <p2 id="forecast-temperature">
+        <strong> 
+         ${Math.round(forecast.main.temp_max)}°
+        </strong>
+         ${Math.round(forecast.main.temp_min)}°
+         </p2>
+         </div>
+        </div>
+        </div>
+    `;
   }
 }
 
@@ -93,6 +148,9 @@ function showCity(city) {
   let apiKey = "4af9b5d3de1ded9c0d4d2430790f082e";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(showTemperature);
+
+  apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(showForecast);
 }
 
 function search(event) {
@@ -114,6 +172,24 @@ function showCelsius(event) {
   temperatureElement.innerHTML = Math.round(celsiusTemperature);
 }
 
+function showQuote(temperature) {
+  let quoteElement = document.querySelector("#quote");
+
+  if (temperature < 0) {
+    quoteElement.innerHTML = "Beware of the cold!";
+  } else if (temperature < 3) {
+    quoteElement.innerHTML = "Winter is coming...";
+  } else if (temperature < 14) {
+    quoteElement.innerHTML = "Could be worse...";
+  } else if (temperature < 19) {
+    quoteElement.innerHTML = "Feels like spring";
+  } else if (temperature < 29) {
+    quoteElement.innerHTML = "Hello Summer!";
+  } else if (temperature < 60) {
+    quoteElement.innerHTML = "It's getting hot in here";
+  }
+}
+
 let celsiusTemperature = null;
 
 let form = document.querySelector("#search-form");
@@ -127,3 +203,4 @@ celsiusLink.addEventListener("click", showCelsius);
 
 showDate();
 showCity("Warsaw");
+//showQuote();

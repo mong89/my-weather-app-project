@@ -1,8 +1,7 @@
 body {
   padding: 100px;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Courier New", Courier, monospace;
   font-size: 13px;
-  background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
 }
 .my-weather-app-wrapper {
   max-width: 600px;
@@ -13,7 +12,9 @@ body {
   padding: 20px;
   border: 1px solid gray;
   border-radius: 15px;
-  background-image: linear-gradient(-20deg, #e9defa 0%, #fbfcdb 100%);
+  background-image: url("../src/background_image.jpg");
+  background-size: cover;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 .form {
   display: block;
@@ -25,15 +26,18 @@ body {
 
 .enter-city {
   display: inline-block;
-  border: #6610f2;
+  vertical-align: middle;
+  border: initial;
+  border-color: rgba(235, 14, 255, 0.637);
 }
+
 .btn {
-  display: inline-block;
+  vertical-align: middle;
   font-weight: 400;
   line-height: 0.95;
   height: 28px;
   border: 1px;
-  background-color: lightskyblue;
+  background-color: rgba(235, 14, 255, 0.637);
 }
 
 h1 {
@@ -58,6 +62,7 @@ p1 {
   margin-top: 20px;
   margin-right: 60px;
   float: left;
+  font-size: 15px;
 }
 
 img {
@@ -68,6 +73,42 @@ img {
 }
 
 ul {
-  margin-top: 100px;
+  margin-top: 134px;
   line-height: 18px;
+}
+
+p2 {
+  font-size: 15px;
+}
+
+.weather-forecast {
+  display: flex;
+  margin-top: 30px;
+  width: 100%;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.forecast-column {
+  margin: auto;
+  justify-content: space-between;
+}
+h3 {
+  text-align: center;
+  font-size: 13px;
+  justify-content: space-around;
+}
+
+.forecast-img {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+p3 {
+  font-size: 13px;
+  justify-content: space-around;
+}
+
+footer {
+  position: relative, left: 200px;
 }
