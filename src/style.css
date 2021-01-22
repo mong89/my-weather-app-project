@@ -43,6 +43,7 @@ body {
 h1 {
   font-size: 18px;
   margin-top: 20px;
+  margin-right: 30px;
 }
 
 p {
@@ -59,10 +60,10 @@ p {
 }
 
 p1 {
-  display: inline-block;
-  margin-top: 20px;
-  margin-right: 60px;
+  display: flex;
+  margin-top: 35px;
   font-size: 15px;
+  flex-direction: row;
 }
 
 img {
@@ -73,14 +74,16 @@ img {
 }
 
 ul {
-  margin-top: 120px;
+  margin-top: 118px;
   line-height: 18px;
 }
 
-p2 {
+.col-5 p2 {
+  display: flex;
   font-size: 15px;
-  margin-top: 13px;
-  margin-left: 30px;
+  margin-top: 35px;
+  margin-left: 10px;
+  flex-direction: row;
 }
 
 .weather-forecast {
@@ -94,26 +97,25 @@ p2 {
   margin: auto;
   justify-content: space-between;
 }
+
 h3 {
   text-align: center;
   font-size: 13px;
   justify-content: space-around;
 }
 
-.forecast-icon {
+.weather-forecast img {
   display: flex;
-  margin-left: auto;
-  margin-right: auto;
+  margin-left: 10px;
   flex-direction: row;
 }
 
-.forecast-temperature {
-  display: flex;
-  margin-left: auto;
-  margin-right: auto;
-  flex-direction: row;
+.weather-forecast-temperature p2 {
+  text-align: center;
+  margin-left: 15px;
   font-size: 13px;
+  justify-content: space-around;
 }
 .footer {
-  text-align: center;
+  text-align: left;
 }

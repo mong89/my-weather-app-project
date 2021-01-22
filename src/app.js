@@ -31,7 +31,7 @@ function showDate() {
   }
 
   let h1 = document.querySelector("#current-date");
-  h1.innerHTML = `${day} ${month} ${date} ${year}, ${hours}:${minutes}`;
+  h1.innerHTML = `${day} ${month} ${date} ${year} ${hours}:${minutes}`;
 }
 
 function showHours(timestamp) {
@@ -49,8 +49,6 @@ function showHours(timestamp) {
 }
 
 function showTemperature(response) {
-  //   let dateElement = document.querySelector("#current-date");
-  //   dateElement.innerHTML = await response.data.dt;
   let temperatureElement = document.querySelector("#temperature");
   temperatureElement.innerHTML = Math.round(response.data.main.temp);
 
@@ -70,6 +68,7 @@ function showTemperature(response) {
   windElement.innerHTML = response.data.wind.speed;
 
   celsiusTemperature = response.data.main.temp;
+
   showQuote(response.data.main.temp);
 }
 
@@ -117,6 +116,8 @@ function showForecast(response) {
 
   for (let index = 0; index < 6; index++) {
     forecast = response.data.list[index];
+    let desc = response.data.list[index].weather[0].description;
+    iconPath = getIconPath(desc);
     forecastElement.innerHTML += `
         <div class="weather-forecast" id="forecast">
         <div class="forecast-column" id="forecast-column">
