@@ -69,9 +69,6 @@ function showTemperature(response) {
   let windElement = document.querySelector("#wind");
   windElement.innerHTML = response.data.wind.speed;
 
-  //   let quoteElement = document.querySelector("#quote");
-  //   quoteElement.innerHTML = showQuote(response.data.quote);
-
   celsiusTemperature = response.data.main.temp;
   showQuote(response.data.main.temp);
 }
@@ -126,10 +123,9 @@ function showForecast(response) {
             <h3 id="forecast-hour"> 
             ${showHours(forecast.dt * 1000)} 
             </h3>
-            <img id="forecast-img"
-            src="src/weather_icons/.png"
+            <img id="forecast-icon"
+            src="${getIconPath(desc)}"
             />
-            <br />
          <div class="weather-forecast-temperature">
          <p2 id="forecast-temperature">
         <strong> 
@@ -203,4 +199,3 @@ celsiusLink.addEventListener("click", showCelsius);
 
 showDate();
 showCity("Warsaw");
-//showQuote();
